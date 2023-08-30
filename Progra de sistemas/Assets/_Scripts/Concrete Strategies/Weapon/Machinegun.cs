@@ -19,6 +19,7 @@ public class Machinegun : MonoBehaviour, IWeapon
     #region IWeapon Properties
     
     public GameObject Bullet => _bullet;
+    public WeaponStats Stats { get; }
     public int Damage => _damage;
     public int BulletCount => _bulletCount;
     public int MagSize => _magSize;
