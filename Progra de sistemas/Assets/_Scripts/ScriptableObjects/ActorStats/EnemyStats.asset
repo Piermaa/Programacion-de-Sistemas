@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bf1b581d7dd4ee4e8573951efb5735d, type: 3}
-  m_Name: PistolStats
+  m_Script: {fileID: 11500000, guid: 7bd007882956a564883193d1fed5e506, type: 3}
+  m_Name: EnemyStats
   m_EditorClassIdentifier: 
   _stats:
-    Damage: 1
-    MagSize: 10
+    MaxLife: 20
+    MovementSpeed: 3

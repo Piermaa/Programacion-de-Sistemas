@@ -9,6 +9,7 @@ public class Actor : MonoBehaviour , IDamageable
 
   private int _currentHealth;
   [SerializeField] protected ActorStats _stats;
+  [SerializeField] protected string actorID;
     
   #region MonoBehaviour Callbacks
 
@@ -28,6 +29,7 @@ public class Actor : MonoBehaviour , IDamageable
       _currentHealth = 0;
       Death();
     }
+    UIManager.Instance.UpdateActorHealth(actorID,_currentHealth);
     print($"{name}'s current health: {_currentHealth}");
   }
 

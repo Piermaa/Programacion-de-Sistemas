@@ -44,6 +44,7 @@ public class Character : Actor
 
     private void Update()
     {
+        
         if (Input.GetKeyDown(_attack)) _currentWeapon.Attack();
         if (Input.GetKeyDown(_reload)) _currentWeapon.Reload();
         
@@ -79,5 +80,10 @@ public class Character : Actor
         _weaponList[index].gameObject.SetActive(true);
         _currentWeapon = _weaponList[index].GetComponent<IWeapon>();
         _currentWeapon.Reload();
+    }
+
+    public void PickUpItem(Item item)
+    {
+        
     }
 }
