@@ -4,25 +4,7 @@ using UnityEngine;
 
 public interface IListener
 {
-    void OnEventDispach();
+    string EventID { get; }
+    void OnEventDispatch();
 }
 
-
-public class EventsManager
-{
-    /// <summary>
-    /// LAZY SINGLETON
-    /// </summary>
-    public static EventsManager Instance
-    {
-        get
-        {
-            if (Instance==null)
-                instance = new EventsManager();
-
-            return instance;
-        }
-    }
-
-    private static EventsManager instance;
-}

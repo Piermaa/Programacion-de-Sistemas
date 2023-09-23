@@ -4,15 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-  [SerializeField] private TMP_Text playerHealthText;
+  public static UIManager Instance;
+
+  public PlayerUIManager PlayerUI => _playerUIManager;
+  public WeaponsUIManager WeaponsUI => _weaponsUIManager;
+  
   [SerializeField] private TMP_Text enemyHealthText;
   [SerializeField] private TMP_Text pickUpItemText;
-    
-  public static UIManager Instance;
-  private Dictionary<string, Action<int>> actorActionOnUpdateHealth = new();
+  [SerializeField] private PlayerUIManager _playerUIManager;
+  [SerializeField] private WeaponsUIManager _weaponsUIManager;
   private void Awake()
   {
     if (Instance!=null)
@@ -24,36 +28,41 @@ public class UIManager : MonoBehaviour
     {
       Instance = this;
     }
-    InitializeDictionary();
   }
 
-  public void UpdateActorHealth(string actorID, int healthLeft)
-  {
-    if (actorActionOnUpdateHealth.TryGetValue(actorID,out var onUpdateHealth))
-    {
-      onUpdateHealth.Invoke(healthLeft);
-    }
-  }
+  // public void UpdateActorHealth(string actorID, int healthLeft)
+  // {
+  //   if (actorActionOnUpdateHealth.TryGetValue(actorID,out var onUpdateHealth))
+  //   {
+  //     onUpdateHealth.Invoke(healthLeft);
+  //   }
+  // }
+}
 
-  private void InitializeDictionary()
-  {
-    actorActionOnUpdateHealth.Add("player",UpdatePlayerHealth);
-    actorActionOnUpdateHealth.Add("enemy",UpdateEnemyHealth);
-  }
+[Serializable]
+public class PlayerUIManager
+{
+  [SerializeField] private Image playerHealthBar;
 
-  private void UpdatePlayerHealth(int playerHealth)
+  public void UpdatePlayerHealth(int playerCurrentHealth, int playerMaxHealth)
   {
-    playerHealthText.text = playerHealth.ToString();
+    playerHealthBar.fillAmount = (float)playerCurrentHealth / playerMaxHealth;
   }
+}
+[Serializable]
+public class WeaponsUIManager
+{
+  [SerializeField] private TMP_Text bulletsText;
+  [SerializeField] private Image currentWeapon;
+  [SerializeField] private Sprite[] weapons;
+  public void UpdateBullets(int remainingAttacks, int maxBullets)
+  {
     
-  private void UpdateEnemyHealth(int enemyHealth)
-  {
-    playerHealthText.text = enemyHealth.ToString();
+    bulletsText.text = $"{remainingAttacks}/{maxBullets}";
   }
 
-  public void UpdatePickupItem(Item item)
+  public void EquippedWeapon(int index)
   {
-    bool isValidItem = item != null;
-    pickUpItemText.text = $"item picked up {item.name}";
+    currentWeapon.sprite = weapons[index];
   }
 }

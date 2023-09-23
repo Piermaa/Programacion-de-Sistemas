@@ -6,7 +6,8 @@ using UnityEngine;
 public interface IMovable
 {
     float MovementSpeed { get; }
-    void Move(Vector3 direction);
+    void Move(float direction);
     void Turn(float direction);
+    void StopMove();
 }
 

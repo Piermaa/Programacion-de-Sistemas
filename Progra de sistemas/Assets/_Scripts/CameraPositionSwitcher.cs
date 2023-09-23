@@ -1,5 +1,5 @@
 using UnityEngine;
-public class CameraPositionSwitcher : MonoBehaviour
+public class CameraPositionSwitcher : OnPlayerTriggerEnter
 {
     [SerializeField] private Transform cameraPosition;
     public static Camera Main;
@@ -17,12 +17,8 @@ public class CameraPositionSwitcher : MonoBehaviour
         Gizmos.DrawRay(cameraPosition.position,cameraPosition.forward*10);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public override void OnPlayerCharacterTriggerEnter()
     {
-        if (other.CompareTag("Player"))
-        {
-            print("player");
-            Main.transform.SetPositionAndRotation(cameraPosition.position,cameraPosition.rotation);
-        }
+        Main.transform.SetPositionAndRotation(cameraPosition.position,cameraPosition.rotation);
     }
 }

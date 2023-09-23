@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: CamPos
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 6e25e74d93f2a85458c20d2e7958b0a7, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c12e53365edfb543a55193cadd38da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerTag: Player
   cameraPosition: {fileID: 142101295265528574}
 --- !u!65 &142101295451782798
 BoxCollider:

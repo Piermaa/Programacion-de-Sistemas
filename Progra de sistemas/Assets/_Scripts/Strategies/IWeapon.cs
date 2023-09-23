@@ -2,31 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public interface IWeapon
 {
     WeaponStats Stats { get; }
     int Damage { get; }
-    int BulletCount { get; }
+    int AttackCount { get; }
     int MagSize { get; }
 
     void Aim();
     void StopAiming();
     void Attack();
-    void SpecialAttack();
-    bool HasSpecialAttack();
     void Reload();
+    void UpdateUI();
 }
 
 
 public interface IBullet
 {
+    int Damage { get; }
     float Speed { get; }
     float LifeTime { get; }
-    LayerMask HitteableLayers { get; }
-    string BulletType { get; }
-    IWeapon Owner { get; }
-
-    void SetOwner(IWeapon weapon);
+    string HitteableTag { get; }
     void Init();
     void Travel();
 }

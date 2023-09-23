@@ -1,5 +1,6 @@
 
-using UnityEngine;public abstract class AbstractFactory<T> where T : IProduct
+using UnityEngine;
+public abstract class AbstractFactory<T> where T : IProduct
 {
     protected T _product;
     public abstract T CreateProduct();
@@ -10,19 +11,13 @@ using UnityEngine;public abstract class AbstractFactory<T> where T : IProduct
     }
 }
 
-public class Bullet : MonoBehaviour, IProduct
-{
-    public GameObject MyGameObject
-    { get; }
-    
-    public IProduct Clone()
-    {
-        print("");
-        return Instantiate(this);
-    }
-    
-}
-// public BulletFactory : AbstractFactory<BasicBullet>
+// public class Bullet : MonoBehaviour, IProduct
 // {
-//     return 
+//     public GameObject MyGameObject
+//     { get; }
+//     
+//     public IProduct Clone()
+//     {
+//         return Instantiate(this);
+//     }
 // }

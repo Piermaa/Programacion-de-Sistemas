@@ -45,7 +45,7 @@ public class Aim : MonoBehaviour
             {
                 float distance=Vector3.Distance(transform.position,_targetsInRange[i].transform.position);
 
-                if (distance<nearestDistance)
+                if (distance<nearestDistance && _targetsInRange[i]!=null)
                 {
                     nearestActor = _targetsInRange[i];
                     nearestDistance = distance;
