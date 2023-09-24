@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8833792510109983842}
   - component: {fileID: 8833792510109983853}
   - component: {fileID: 8833792510109983852}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PistolHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 8833792510615595884}
   - component: {fileID: 8833792510615595887}
   - component: {fileID: 8833792510615595886}
-  m_Layer: 0
+  - component: {fileID: 1002162799}
+  m_Layer: 3
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,9 +109,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8833792510615595875}
-  m_LocalRotation: {x: 0.7160064, y: -0, z: -0, w: 0.6980938}
+  m_LocalRotation: {x: 0.71600336, y: 0, z: 0, w: 0.6980968}
   m_LocalPosition: {x: 0.495, y: 0.092, z: 0.227}
-  m_LocalScale: {x: 0.19567, y: 0.19567, z: 0.19567}
+  m_LocalScale: {x: 0.12303142, y: 0.12303142, z: 0.12303142}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8833792510109983842}
@@ -168,6 +169,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1002162799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8833792510615595875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2c66234db2fc74fabce93d82d93792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stats: {fileID: 11400000, guid: 96a36f495cf76864c9ba4e732a4b0f07, type: 2}
+  _aim: {fileID: 0}
+  remainingAttacks: 10
+  _isAiming: 0
+  playerTransform: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  bulletsInStock: 10
 --- !u!1001 &3230122388675484148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -178,6 +198,18 @@ PrefabInstance:
     - target: {fileID: 1477722391941156, guid: 4b4193be53e751147ac305034c03fe35, type: 3}
       propertyPath: m_Name
       value: Makarov
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477722391941156, guid: 4b4193be53e751147ac305034c03fe35, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687884250196152, guid: 4b4193be53e751147ac305034c03fe35, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740886145661366, guid: 4b4193be53e751147ac305034c03fe35, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4487492164278536, guid: 4b4193be53e751147ac305034c03fe35, type: 3}
       propertyPath: m_RootOrder

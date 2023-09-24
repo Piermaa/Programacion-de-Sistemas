@@ -10,7 +10,6 @@ public class Character : Actor
 
     [SerializeField] private List<MovementController> _movementControllers=new();
     [SerializeField] private List<GameObject> _weaponList = new();
-
     #endregion
 
     #region Class Properties

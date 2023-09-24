@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: BossEnemyStats
   m_EditorClassIdentifier: 
   _stats:
-    MaxLife: 120
-    MovementSpeed: 1
+    MaxLife: 200
+    MovementSpeed: 2.2
   _enemyStatsValues:
     Damage: 5
     AttackRange: 0.25
-    AttackCoolDown: 5
+    AttackCoolDown: 3
+    WhatIsPlayer:
+      serializedVersion: 2
+      m_Bits: 8

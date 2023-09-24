@@ -11,8 +11,13 @@ public class BossEnemy : MovableEnemy
     [SerializeField] private int _phase=0;
 
     #endregion
-    
+
+    #region Class Properties
+
     private BossPhase _currentPhase=default;
+    private const string PHASE_INTEGER = "Phase";
+
+    #endregion
 
     #region Unity Callbacks
 
@@ -32,15 +37,17 @@ public class BossEnemy : MovableEnemy
 
     private void ChangePhase(int index)
     {
+        _attackTimer = 0;
+        _animator.ResetTrigger(ATTACK_TRIGGER);
         if (index>0)
         {
             _currentPhase.Effects.SetActive(false);
         }
-        _animator.SetInteger("Phase",_phase);
+        _animator.SetInteger(PHASE_INTEGER,_phase);
         _currentPhase = _bossPhases[index];
         _currentPhase.Effects.SetActive(true);
-
-        _enemyAttack = _currentPhase.PhaseEnemyAttack;
+        
+        _cmdEnemyAttack = new(_currentPhase.PhaseEnemyAttack,_enemyStatsValues,attackOrigin);
         _agentController.SetAgent(_currentPhase.PhaseAgent);
     }
 
@@ -59,6 +66,4 @@ public class BossEnemy : MovableEnemy
     }
 
     #endregion
-
-  
 }

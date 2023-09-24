@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stats:
     AttackTrigger: Shoot
-    Damage: 5
+    Damage: 8
     MagSize: 3

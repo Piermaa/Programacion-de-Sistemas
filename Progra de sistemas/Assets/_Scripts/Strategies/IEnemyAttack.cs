@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IEnemyAttack
 {
-    void Attack(EnemyStats enemyStatistics, Vector3 attackOriginPosition, LayerMask whatIsPlayer);
+    void Attack(EnemyStats enemyStatistics, Transform attackOrigin);
 }
 
 /// <summary>
@@ -12,7 +12,7 @@ public interface IEnemyAttack
 /// </summary>
 public class EnemyAttack : MonoBehaviour, IEnemyAttack
 {
-    public virtual void Attack(EnemyStats enemyStats, Vector3 attackOriginPosition, LayerMask whatIsPlayer)
+    public virtual void Attack(EnemyStats enemyStats, Transform attackOriginPosition)
     {
         
     }

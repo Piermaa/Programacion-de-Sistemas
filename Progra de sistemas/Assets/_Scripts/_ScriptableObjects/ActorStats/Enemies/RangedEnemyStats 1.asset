@@ -19,3 +19,6 @@ MonoBehaviour:
     Damage: 3
     AttackRange: 0
     AttackCoolDown: 5
+    WhatIsPlayer:
+      serializedVersion: 2
+      m_Bits: 8

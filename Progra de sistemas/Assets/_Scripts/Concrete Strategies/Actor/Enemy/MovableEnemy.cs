@@ -15,6 +15,10 @@ public class MovableEnemy : StaticEnemy
 
     private void LateUpdate()
     {
-        _animator.gameObject.transform.localPosition = new Vector3(0, -1, 0);
+        //algo mal hice al importar todos los modelos 3d que si no hago esto se empiezan a desfazar del parent :c
+        if (!IsDead)
+        {
+            _animator.gameObject.transform.localPosition = new Vector3(0, -1, 0);
+        }
     }
 }

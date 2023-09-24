@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Actor : MonoBehaviour, IDamageable
 {
@@ -13,6 +14,7 @@ public class Actor : MonoBehaviour, IDamageable
 
   [SerializeField] protected ActorStats _stats;
   [SerializeField] private ParticleSystem _bloodParticles;
+  [SerializeField] private AudioSource _takingDamageSound;
 
   #endregion
     
@@ -31,6 +33,7 @@ public class Actor : MonoBehaviour, IDamageable
 
   public virtual void TakeDamage(int damage)
   {
+    _takingDamageSound.Play();
     _bloodParticles.Play();
     _currentHealth -= damage;
     if (_currentHealth <= 0)
@@ -39,7 +42,7 @@ public class Actor : MonoBehaviour, IDamageable
       Death();
     }
 
-    print($"{name}'s current health: {_currentHealth}");
+    //print($"{name}'s current health: {_currentHealth}");
   }
   public virtual void Death()
   {

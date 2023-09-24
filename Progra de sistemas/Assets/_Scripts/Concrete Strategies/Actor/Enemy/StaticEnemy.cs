@@ -24,12 +24,18 @@ public class StaticEnemy : Actor
     protected EnemyStats _enemyStatsValues;
     protected IEnemyAttack _enemyAttack;
 
-    private float _attackTimer=0;
-    private bool _playerInRange = false;
+    protected const string ATTACK_TRIGGER = "Attack";
+    protected float _attackTimer=0;
+    public bool _playerInRange = false;
     private bool _isDead=false;
 
     #endregion
 
+    #region Commands
+
+    protected CmdEnemyAttack _cmdEnemyAttack;
+
+    #endregion
     #region Unity Callbacks
 
     protected override void Awake()
@@ -37,6 +43,8 @@ public class StaticEnemy : Actor
         base.Awake();
         _enemyStatsValues = _stats as EnemyStats;
         _enemyAttack = GetComponent<IEnemyAttack>();
+
+        _cmdEnemyAttack = new CmdEnemyAttack(_enemyAttack, _enemyStatsValues, attackOrigin);
     }
     
     private void FixedUpdate()
@@ -56,13 +64,13 @@ public class StaticEnemy : Actor
 
     protected void BeginAttack()
     {
-        _animator.SetTrigger("Attack");
+        _animator.SetTrigger(ATTACK_TRIGGER);
         _attackTimer = 0;
     }
 
     public void Attack()
     {
-        _enemyAttack.Attack(_enemyStatsValues,attackOrigin.position, whatIsPlayer); //todo: cmd
+        GameManager.instance.AddEvents(_cmdEnemyAttack);
     }
 
     public void PlayerInRange(bool playerInRange)

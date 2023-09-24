@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ReloadableWeapon : Weapon
 {
@@ -8,14 +9,21 @@ public class ReloadableWeapon : Weapon
 
     public int BulletsInStock
     {
-        set => bulletsInStock = value;
-        get => bulletsInStock;
+        set => _bulletsInStock = value;
+        get => _bulletsInStock;
     }
 
     #endregion
 
-    [SerializeField] private int bulletsInStock = 10;
+    #region Serialized Variables
 
+    [FormerlySerializedAs("bulletsInStock")] [SerializeField] private int _bulletsInStock = 10;
+    [SerializeField] private AudioSource _shootSound;
+    [SerializeField] private ParticleSystem _muzzleShotParticles;
+    [SerializeField] private AudioSource _reloadSound;
+
+    #endregion
+   
    #region Weapon Overrided Methods
    
    public override void Attack()
@@ -23,17 +31,27 @@ public class ReloadableWeapon : Weapon
        if (remainingAttacks>0)
        {
            base.Attack();
+           
+           if (_isAiming)
+           {
+               _shootSound.PlayOneShot(_shootSound.clip);
+               _muzzleShotParticles.Play();
+           }
        }
    }
    public override void Reload()
    {
-       remainingAttacks += GetBulletsFromStock();
-       UpdateUI();
+       if (_bulletsInStock>0)
+       {
+           remainingAttacks += GetBulletsFromStock();
+           UpdateUI();
+           _reloadSound.Play();
+       }
    }
 
    public override void UpdateUI()
    {
-       UIManager.Instance.WeaponsUI.UpdateBullets(AttackCount, bulletsInStock);
+       UIManager.Instance.WeaponsUI.UpdateBullets(AttackCount, _bulletsInStock);
    }
 
    #endregion
@@ -43,14 +61,17 @@ public class ReloadableWeapon : Weapon
    private int GetBulletsFromStock()
    {
        var bulletsToAdd = MagSize - remainingAttacks;
-       if (bulletsToAdd>bulletsInStock)
+       
+       if (bulletsToAdd>_bulletsInStock) //si me faltan mas balas que las que tengo
        {
-           bulletsInStock = 0;
-           return bulletsInStock;
+           //agrego todas y pongo en 0
+           var temp = _bulletsInStock; 
+           _bulletsInStock = 0;
+           return temp;
        }
        else
        {
-           bulletsInStock -= bulletsToAdd;
+           _bulletsInStock -= bulletsToAdd;
            return bulletsToAdd;
        }
    }

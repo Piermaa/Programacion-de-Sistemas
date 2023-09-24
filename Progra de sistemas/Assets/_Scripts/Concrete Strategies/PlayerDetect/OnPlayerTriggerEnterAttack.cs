@@ -10,4 +10,12 @@ public class OnPlayerTriggerEnterAttack : OnPlayerTriggerEnter
     {
        _enemy.PlayerInRange(true);
     }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _enemy.PlayerInRange(false);
+        }
+    }
 }

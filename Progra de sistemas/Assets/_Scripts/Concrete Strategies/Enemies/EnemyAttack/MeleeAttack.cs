@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MeleeAttack : EnemyAttack
 {
-    public override void Attack(EnemyStats enemyStats, Vector3 attackOriginPosition, LayerMask whatIsPlayer)
+    public override void Attack(EnemyStats enemyStats, Transform attackOrigin)
     {
-        var playerCollider= Physics.OverlapSphere(attackOriginPosition, enemyStats.AttackRange,whatIsPlayer);
+        var playerCollider= Physics.OverlapSphere(attackOrigin.position, enemyStats.AttackRange,enemyStats.WhatIsPlayer);
         if (playerCollider.Length > 0)
         {
             playerCollider[0].GetComponent<Character>().TakeDamage(enemyStats.Damage);

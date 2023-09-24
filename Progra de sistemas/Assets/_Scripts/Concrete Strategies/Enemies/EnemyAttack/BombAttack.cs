@@ -5,9 +5,9 @@ using UnityEngine;
 public class BombAttack : EnemyAttack
 {
     [SerializeField] private GameObject explosionEffect;
-    public override void Attack(EnemyStats enemyStats, Vector3 attackOriginPosition, LayerMask whatIsPlayer)
+    public override void Attack(EnemyStats enemyStats, Transform attackOrigin)
     {
-        var actors = Physics.OverlapSphere(attackOriginPosition, enemyStats.AttackRange, whatIsPlayer);
+        var actors = Physics.OverlapSphere(attackOrigin.position, enemyStats.AttackRange, enemyStats.WhatIsPlayer);
 
         foreach (Collider col in actors)
         {

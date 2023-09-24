@@ -47,11 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTag: Player
-  period: 2
+  _period: 2
   _rotationSpeed: 50
   _movementPosition: {x: 0, y: 0.5, z: 0}
   _movementFactor: 0
-  maxBulletsToAdd: 10
+  maxBulletsToAdd: 20
+  minBulletsToAdd: 5
   weaponIndex: 1
 --- !u!65 &6201629844030939376
 BoxCollider:
@@ -83,15 +84,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 428250, guid: 1135fa7f3918d584ca35b7d960c4748f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 13.465261
+      value: 6.919259
       objectReference: {fileID: 0}
     - target: {fileID: 428250, guid: 1135fa7f3918d584ca35b7d960c4748f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 13.465261
+      value: 6.919259
       objectReference: {fileID: 0}
     - target: {fileID: 428250, guid: 1135fa7f3918d584ca35b7d960c4748f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 13.465261
+      value: 6.919259
       objectReference: {fileID: 0}
     - target: {fileID: 428250, guid: 1135fa7f3918d584ca35b7d960c4748f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -99,11 +100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 428250, guid: 1135fa7f3918d584ca35b7d960c4748f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000000011445
+      value: -0.0000000058812
       objectReference: {fileID: 0}
     - target: {fileID: 428250, guid: 1135fa7f3918d584ca35b7d960c4748f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.278
+      value: -0.29424
       objectReference: {fileID: 0}
     - target: {fileID: 428250, guid: 1135fa7f3918d584ca35b7d960c4748f, type: 3}
       propertyPath: m_LocalRotation.w
