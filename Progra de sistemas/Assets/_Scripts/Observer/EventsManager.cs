@@ -9,6 +9,8 @@ public static class EventsKeys
 
 public class EventsManager
 {
+    #region SingleTon
+
     public static EventsManager Instance
     {
         get
@@ -22,12 +24,13 @@ public class EventsManager
 
     private static EventsManager instance;
 
-    //Simple Events
-    private Dictionary<string, List<IListener>> simpleEvents = new();
+    #endregion
+   
+    private Dictionary<string, List<IListener>> _simpleEvents = new();
 
     public void AddListener(string eventID, IListener p_listener)
     {
-        if (simpleEvents.TryGetValue(eventID, out var listeners) && !listeners.Contains(p_listener))
+        if (_simpleEvents.TryGetValue(eventID, out var listeners) && !listeners.Contains(p_listener))
         {
             listeners.Add(p_listener);
         }
@@ -35,7 +38,7 @@ public class EventsManager
 
     public void RemoveListener(string eventID, IListener p_listener)
     {
-        if (simpleEvents.TryGetValue(eventID, out var listeners) && listeners.Contains(p_listener))
+        if (_simpleEvents.TryGetValue(eventID, out var listeners) && listeners.Contains(p_listener))
         {
             listeners.Remove(p_listener);
         }
@@ -43,7 +46,7 @@ public class EventsManager
 
     public void DispatchSimpleEvent(string eventID)
     {
-        if (simpleEvents.TryGetValue(eventID, out var listeners))
+        if (_simpleEvents.TryGetValue(eventID, out var listeners))
         {
             for (int i = listeners.Count - 1; i >= 0; i--)
             {
@@ -58,9 +61,14 @@ public class EventsManager
 
     public void RegisterEvent(string eventID)
     {
-        if (!simpleEvents.ContainsKey(eventID))
+        if (!_simpleEvents.ContainsKey(eventID))
         {
-            simpleEvents[eventID] = new List<IListener>();
+            _simpleEvents[eventID] = new List<IListener>();
         }
+    }
+
+    public void ClearEvents()
+    {
+        _simpleEvents = new();
     }
 }

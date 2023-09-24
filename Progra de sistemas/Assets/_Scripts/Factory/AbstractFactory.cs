@@ -1,4 +1,3 @@
-
 using UnityEngine;
 public abstract class AbstractFactory<T> where T : IProduct
 {
@@ -10,14 +9,3 @@ public abstract class AbstractFactory<T> where T : IProduct
         _product = productToProduce;
     }
 }
-
-// public class Bullet : MonoBehaviour, IProduct
-// {
-//     public GameObject MyGameObject
-//     { get; }
-//     
-//     public IProduct Clone()
-//     {
-//         return Instantiate(this);
-//     }
-// }

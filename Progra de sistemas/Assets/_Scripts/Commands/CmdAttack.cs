@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CmdAttack : ICommand
 {
+    #region Memento Properties 
+
 
     public bool CanUndo
     {
@@ -12,13 +14,16 @@ public class CmdAttack : ICommand
     }
 
     public float TimeToUndo { get; set; }
-    private IWeapon _attackWeapon;
 
+    #endregion
+    
+    private IWeapon _attackWeapon;
     public CmdAttack(IWeapon attackWeapon)
     {
         _attackWeapon = attackWeapon;
     }
 
+    #region ICommand Methods
 
     public void Do()
     {
@@ -29,4 +34,7 @@ public class CmdAttack : ICommand
     {
         //td
     }
+
+    #endregion
+  
 }

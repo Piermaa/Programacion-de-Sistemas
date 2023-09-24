@@ -10,17 +10,28 @@ public class StaticEnemy : Actor
         set => _isDead = value;
         get => _isDead;
     }
-
+   
+    #region Serialized Variables
+    
     [SerializeField] protected Transform attackOrigin;
     [SerializeField] protected Animator _animator;
     [SerializeField] protected LayerMask whatIsPlayer;
- 
+
+    #endregion
+
+    #region Class Properties
+
     protected EnemyStats _enemyStatsValues;
     protected IEnemyAttack _enemyAttack;
 
     private float _attackTimer=0;
     private bool _playerInRange = false;
-    private bool _isDead=false;   
+    private bool _isDead=false;
+
+    #endregion
+
+    #region Unity Callbacks
+
     protected override void Awake()
     {
         base.Awake();
@@ -39,6 +50,10 @@ public class StaticEnemy : Actor
         }
     }
 
+    #endregion
+    
+    #region Class Methods
+
     protected void BeginAttack()
     {
         _animator.SetTrigger("Attack");
@@ -55,6 +70,10 @@ public class StaticEnemy : Actor
         _playerInRange = playerInRange;
     }
 
+    #endregion
+
+    #region Actor Overrided Methods
+
     public override void Death()
     {
         if (!_isDead)
@@ -70,4 +89,6 @@ public class StaticEnemy : Actor
             }
         }
     }
+    
+    #endregion
 }

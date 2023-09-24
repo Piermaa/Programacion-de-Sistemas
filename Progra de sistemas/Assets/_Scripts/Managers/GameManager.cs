@@ -7,12 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+  #region Facade
+
   public WinGameManager WinManager => _winGameManager;
   public LooseGameManager LooseManager => _looseGameManager;
     
   [SerializeField] private WinGameManager _winGameManager;
   [SerializeField] private LooseGameManager _looseGameManager;
-  
+  #endregion
+    
   #region Singleton
 
   public static GameManager instance;
@@ -75,26 +78,6 @@ public class GameManager : MonoBehaviour
 }
 
 
-[Serializable]
-public class WinGameManager : IListener
-{
-  public string EventID => _eventID;
-  [SerializeField]private string _eventID;
 
-  public void OnEventDispatch()
-  {
-    SceneManager.LoadScene("Win");
-  }
-}
 
-[Serializable]
-public class LooseGameManager : IListener
-{
-  public string EventID => _eventID;
-  [SerializeField] private string _eventID;
 
-  public void OnEventDispatch()
-  {
-    SceneManager.LoadScene("GameOver");
-  }
-}

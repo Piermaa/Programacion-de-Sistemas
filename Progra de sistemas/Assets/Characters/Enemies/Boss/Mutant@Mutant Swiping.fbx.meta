@@ -57,8 +57,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.022404144
+        functionName: Agent_Stop
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2211bc970847802428fd3a2cbb2b0244, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.52398527
         functionName: Enemy_Attack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2211bc970847802428fd3a2cbb2b0244, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9714994
+        functionName: Agent_Resume
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 2211bc970847802428fd3a2cbb2b0244, type: 3}
         floatParameter: 0

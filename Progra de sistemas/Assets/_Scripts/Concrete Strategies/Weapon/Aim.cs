@@ -1,18 +1,22 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class Aim : MonoBehaviour
 {
+    #region Class Properties
+
     private const string Enemy="Enemy";
     private List<Actor> _targetsInRange=new();
+
+    #endregion
+    
+    #region MonoBehaviour Callbacks
 
     private void OnDisable()
     {
         _targetsInRange.Clear();
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Enemy))
@@ -27,8 +31,9 @@ public class Aim : MonoBehaviour
             _targetsInRange.Remove(other.GetComponent<Actor>());
         }
     }
-    
 
+    #endregion
+    
     public Actor GetClosestTarget()
     {
         var count = _targetsInRange.Count;
@@ -58,7 +63,4 @@ public class Aim : MonoBehaviour
 
        
     }
-    
-    
-    
 }

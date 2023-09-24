@@ -2,11 +2,25 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class AgentController : MonoBehaviour
+public class AgentController : MonoBehaviour, IListener
 {
+    #region IListener Properties
+
+    public string EventID => _eventID;
+    [SerializeField] private string _eventID;
+
+    #endregion
+
+    #region Class Properties
+
     private IAgent[] _agents;
     private IAgent _currentAgent;
     private bool _canMove;
+
+    #endregion
+
+    #region Unity Callbacks
+
     private void Awake()
     {
         _agents = GetComponents<Agent>();
@@ -15,6 +29,10 @@ public class AgentController : MonoBehaviour
     private void Start()
     {
         SetAgent(0);
+        if (_eventID!=null)
+        {
+            EventsManager.Instance.AddListener(_eventID,this);
+        }
     }
 
     private void Update()
@@ -39,6 +57,21 @@ public class AgentController : MonoBehaviour
             _currentAgent.NextWaypoint();
         }
     }
+
+    #endregion
+
+    #region IListener Methods
+
+    public void OnEventDispatch()
+    {
+        SetAgent(1);
+        print("observed");
+        EventsManager.Instance.RemoveListener(_eventID,this);
+    }
+
+    #endregion
+
+    #region Class Methods
 
     public void SetAgent(int index)
     {   
@@ -80,6 +113,9 @@ public class AgentController : MonoBehaviour
     
     public void StopTime(float time)
     {
-       StartCoroutine(StoppingTime(time));
+        StartCoroutine(StoppingTime(time));
     }
+
+    #endregion
+    
 }

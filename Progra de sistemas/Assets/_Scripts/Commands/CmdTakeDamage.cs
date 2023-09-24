@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class CmdTakeDamage : ICommand
 {
+    #region Memento Properties
+
+    public bool CanUndo
+    {
+        get=>false;
+        set => throw new System.NotImplementedException();
+    }
+
+    public float TimeToUndo { get; set; }
+
+    #endregion
+    
     private IDamageable _victim; //acceso a takedamage
     private int _damage;
 
@@ -13,13 +25,7 @@ public class CmdTakeDamage : ICommand
         _damage = damage;
     }
 
-    public bool CanUndo
-    {
-        get=>false;
-        set => throw new System.NotImplementedException();
-    }
-
-    public float TimeToUndo { get; set; }
+    #region ICommand Methods
 
     public void Do()
     {
@@ -30,4 +36,8 @@ public class CmdTakeDamage : ICommand
     {
         _victim.TakeDamage(-_damage);
     }
+
+    #endregion
+
+    
 }

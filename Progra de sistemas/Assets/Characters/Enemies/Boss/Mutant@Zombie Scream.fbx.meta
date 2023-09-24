@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Zombie Bomb
+      name: Boss Scream
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
@@ -57,8 +57,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.008216726
+      - time: 0.063197024
+        functionName: Agent_Stop
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2211bc970847802428fd3a2cbb2b0244, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4648935
         functionName: Enemy_Attack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2211bc970847802428fd3a2cbb2b0244, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.97213227
+        functionName: Agent_Resume
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 2211bc970847802428fd3a2cbb2b0244, type: 3}
         floatParameter: 0

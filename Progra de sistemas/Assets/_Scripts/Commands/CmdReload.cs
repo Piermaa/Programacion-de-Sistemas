@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CmdReload : ICommand
 {
+   #region Memento Properties
+
    public bool CanUndo
    {
       get => false;
@@ -11,12 +13,17 @@ public class CmdReload : ICommand
    }
 
    public float TimeToUndo { get; set; }
+
+   #endregion
+   
    private IWeapon _weaponToReload;
 
    public CmdReload(IWeapon weaponToReload)
    {
       _weaponToReload = weaponToReload;
    }
+
+   #region ICommand Methods
 
    public void Do()
    {
@@ -27,4 +34,7 @@ public class CmdReload : ICommand
    {
       throw new System.NotImplementedException();
    }
+
+   #endregion
+  
 }

@@ -12,4 +12,9 @@ public class MovableEnemy : StaticEnemy
         base.Awake();
         _agentController = GetComponent<AgentController>();
     }
+
+    private void LateUpdate()
+    {
+        _animator.gameObject.transform.localPosition = new Vector3(0, -1, 0);
+    }
 }

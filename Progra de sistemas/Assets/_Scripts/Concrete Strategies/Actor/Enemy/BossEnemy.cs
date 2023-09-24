@@ -3,26 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public struct BossPhase
-{
-    public string Tag;
-    public EnemyAttack PhaseEnemyAttack;
-    public Agent PhaseAgent;
-    public GameObject Effects;
-    public int HealthUmbral;
-}
-
 public class BossEnemy : MovableEnemy
 {
+    #region Serialized Variables
+
     [SerializeField] private List<BossPhase> _bossPhases;
-    private BossPhase _currentPhase=default;
     [SerializeField] private int _phase=0;
-    protected override void Awake()
+
+    #endregion
+    
+    private BossPhase _currentPhase=default;
+
+    #region Unity Callbacks
+
+    private void Start()
     {
-        base.Awake();
         ChangePhase(_phase);
     }
+
+    #endregion
+
+    #region Class Methods
 
     private bool CheckPhaseChange()
     {
@@ -43,6 +44,10 @@ public class BossEnemy : MovableEnemy
         _agentController.SetAgent(_currentPhase.PhaseAgent);
     }
 
+    #endregion
+    
+    #region Actor Overrided Methods
+
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
@@ -52,4 +57,8 @@ public class BossEnemy : MovableEnemy
             ChangePhase(_phase);
         }
     }
+
+    #endregion
+
+  
 }

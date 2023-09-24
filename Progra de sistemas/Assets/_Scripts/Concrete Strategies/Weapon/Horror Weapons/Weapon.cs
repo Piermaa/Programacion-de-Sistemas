@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 //hereda la estrategia!!!
-//todo: separar balas y recarga de iweapon, armas a melee no se recargan
+
 public class Weapon : MonoBehaviour, IWeapon
 {
     #region Public Properties
@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour, IWeapon
     #endregion
     #endregion
 
-    #region Private Properties
+    #region Serialized Properties
 
     [SerializeField] protected WeaponStats _stats;
     [SerializeField] protected Aim _aim;
@@ -29,7 +29,7 @@ public class Weapon : MonoBehaviour, IWeapon
     [SerializeField] protected Animator playerAnimator;
     #endregion
     
-    #region MONOBEHAVIOUR_CALLBACKS
+    #region MonoBehaviour Callbacks
 
     protected void Awake()
     {
@@ -38,7 +38,8 @@ public class Weapon : MonoBehaviour, IWeapon
     }
 
     #endregion
-    #region Methods
+    
+    #region IWeapon Methods
     public virtual void Attack()
     {
         if (_isAiming)

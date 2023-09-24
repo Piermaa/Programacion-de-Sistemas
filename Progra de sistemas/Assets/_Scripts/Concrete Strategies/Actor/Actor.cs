@@ -2,19 +2,22 @@ using UnityEngine;
 
 public class Actor : MonoBehaviour, IDamageable
 {
-  #region Public vars
+  #region IDamageable Properties
 
   public int CurrentHealth => _currentHealth;
   public int MaxHealth => _stats.MaxLife;
 
   #endregion
 
+  #region Serialized Variables
+
   [SerializeField] protected ActorStats _stats;
   [SerializeField] private ParticleSystem _bloodParticles;
-  private int _currentHealth;
 
-  private CmdDie _cmdDie;
-  
+  #endregion
+    
+  protected int _currentHealth;
+    
   #region MonoBehaviour Callbacks
 
 
@@ -24,7 +27,7 @@ public class Actor : MonoBehaviour, IDamageable
   }
   #endregion
 
-  #region IDamageable Implementation
+  #region IDamageable Methods
 
   public virtual void TakeDamage(int damage)
   {

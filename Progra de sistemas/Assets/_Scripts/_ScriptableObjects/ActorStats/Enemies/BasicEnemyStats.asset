@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BasicEnemyStats
   m_EditorClassIdentifier: 
   _stats:
-    MaxLife: 20
+    MaxLife: 30
     MovementSpeed: 1.5
   _enemyStatsValues:
     Damage: 2
-    AttackRange: 0.5
+    AttackRange: 1
     AttackCoolDown: 5

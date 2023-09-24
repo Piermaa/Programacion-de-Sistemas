@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: ShotgunStats
   m_EditorClassIdentifier: 
   _stats:
+    AttackTrigger: Shoot
     Damage: 5
     MagSize: 3

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CmdTurn : ICommand
 {
+    #region Memento Properties 
     public bool CanUndo
     {
         get=>false;
@@ -11,7 +12,8 @@ public class CmdTurn : ICommand
     }
 
     public float TimeToUndo { get; set; }
-
+    #endregion
+    
     //que se requiere para realizar?
     //propiedades
     
@@ -22,7 +24,9 @@ public class CmdTurn : ICommand
         _movable = movable;
         _direction = direction;
     }
-
+    
+    #region ICommand Methods
+    
     public void Do()
     {
         _movable.Turn(_direction);
@@ -31,4 +35,7 @@ public class CmdTurn : ICommand
     {
         throw new System.NotImplementedException();
     }
+    
+    #endregion
+    
 }
