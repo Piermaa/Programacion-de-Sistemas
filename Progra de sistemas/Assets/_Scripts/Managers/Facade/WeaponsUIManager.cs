@@ -24,9 +24,8 @@ public class WeaponsUIManager
     public void EquippedWeapon(int index)
     {
         currentWeapon.sprite = weapons[index];
+        currentWeapon.SetNativeSize();
     }
 
     #endregion
-    
-   
 }

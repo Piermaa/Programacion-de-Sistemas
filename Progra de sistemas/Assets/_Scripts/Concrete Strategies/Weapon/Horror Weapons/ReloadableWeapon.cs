@@ -41,7 +41,7 @@ public class ReloadableWeapon : Weapon
    }
    public override void Reload()
    {
-       if (_bulletsInStock>0)
+       if (_bulletsInStock>0 && remainingAttacks<MagSize)
        {
            remainingAttacks += GetBulletsFromStock();
            UpdateUI();
