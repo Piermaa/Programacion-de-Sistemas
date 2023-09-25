@@ -7,16 +7,19 @@ public class BombAttack : EnemyAttack
     [SerializeField] private GameObject explosionEffect;
     public override void Attack(EnemyStats enemyStats, Transform attackOrigin)
     {
-        var actors = Physics.OverlapSphere(attackOrigin.position, enemyStats.AttackRange, enemyStats.WhatIsPlayer);
-
-        foreach (Collider col in actors)
+        if (!GetComponent<StaticEnemy>().IsDead) // porque como se llama al morir esto te podia pegar 2 veces, una por la muerte y otra porque el ataque llama la muerte
         {
-            col.GetComponent<Actor>()?.TakeDamage(enemyStats.Damage);
-        }
+            var actors = Physics.OverlapSphere(attackOrigin.position, enemyStats.AttackRange, enemyStats.WhatIsPlayer);
 
-        Instantiate(explosionEffect, transform.position, transform.rotation); //todo pool de bombas
+            foreach (Collider col in actors)
+            {
+                col.GetComponent<Actor>()?.TakeDamage(enemyStats.Damage);
+            }
+
+            Instantiate(explosionEffect, transform.position, transform.rotation); //todo pool de bombas
         
-        GetComponent<IDamageable>().Death();
-        gameObject.SetActive(false);
+            GetComponent<IDamageable>().Death();
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -18,7 +18,7 @@ MonoBehaviour:
   _enemyStatsValues:
     Damage: 5
     AttackRange: 0.25
-    AttackCoolDown: 3
+    AttackCoolDown: 5
     WhatIsPlayer:
       serializedVersion: 2
       m_Bits: 8
