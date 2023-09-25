@@ -15,6 +15,7 @@ public class BombAttack : EnemyAttack
         }
 
         Instantiate(explosionEffect, transform.position, transform.rotation); //todo pool de bombas
+        
         GetComponent<IDamageable>().Death();
         gameObject.SetActive(false);
     }

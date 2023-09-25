@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour, IWeapon
     #region IWeapon Methods
     public virtual void Attack()
     {
-        if (_isAiming)
+        if (_isAiming && remainingAttacks>0)
         {
             //ataca y consume balas
             remainingAttacks--;

@@ -25,20 +25,18 @@ public class ReloadableWeapon : Weapon
     #endregion
    
    #region Weapon Overrided Methods
-   
+
    public override void Attack()
    {
-       if (remainingAttacks>0)
+       base.Attack();
+
+       if (_isAiming)
        {
-           base.Attack();
-           
-           if (_isAiming)
-           {
-               _shootSound.PlayOneShot(_shootSound.clip);
-               _muzzleShotParticles.Play();
-           }
+           _shootSound.PlayOneShot(_shootSound.clip);
+           _muzzleShotParticles.Play();
        }
    }
+
    public override void Reload()
    {
        if (_bulletsInStock>0 && remainingAttacks<MagSize)
